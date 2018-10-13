@@ -22,9 +22,8 @@ object TitleBarHeightMeasurer {
                 }
 
                 override fun componentResized(e: ComponentEvent?) {
-
                     if (titleBarHeight == 0 && frame.height != 0) {
-                        titleBarHeight = frame.height
+                        titleBarHeight = frame.height - frame.contentPane.height + (2 * Dimens.dpi + .5f).toInt()
                         frame.dispose()
                         measureCallback.invoke(titleBarHeight)
                     }
